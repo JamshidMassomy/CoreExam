@@ -1,0 +1,102 @@
+﻿@model IEnumerable<XM.Models.Entity.Registration>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="col-md-10 offset-1">
+
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Table header styling</h5>
+						
+        </div>
+
+        <div class="card-body">
+            Example of a custom table <code>header</code> styling. Table header supports default contextual and custom background colors available in <a href="colors_primary.html">custom color system</a>. To use custom color in the table header, add <code>.bg-*</code> class to the header row. All border and text colors will be automatically adjusted.
+        </div>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr class="bg-blue">
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Eugene</td>
+                    <td>Kopyov</td>
+                    <td>سیبی</td>
+                </tr>
+								
+								
+								
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Toaken)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TokenExpireTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Test)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toaken)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TokenExpireTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Test.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
