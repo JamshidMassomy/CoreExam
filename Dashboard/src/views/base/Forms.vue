@@ -1034,6 +1034,9 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
   name: 'forms',
   data () {
@@ -1046,8 +1049,14 @@ export default {
     click () {
       // do nothing
     }
+  },
+   mounted () {
+    axios
+      .get('https://localhost:44328/api/Look/GetQuestionTypes/QuestionTypes')
+      .then(response => (console.log(response)))
   }
 }
+
 </script>
 
 <style scoped>

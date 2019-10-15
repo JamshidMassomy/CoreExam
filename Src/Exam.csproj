@@ -30,6 +30,10 @@
 
   <ItemGroup>
     <Folder Include="Application\QuestionType\Commands\UpdateQuestionType\" />
+    <Folder Include="Application\Question\Commands\" />
+    <Folder Include="Application\Question\Queries\" />
+    <Folder Include="Application\Registration\Commands\" />
+    <Folder Include="Application\Registration\Queries\" />
   </ItemGroup>
 
 </Project>

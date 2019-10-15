@@ -65,8 +65,8 @@ namespace XM
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-            
+            app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            //JWT
 
             app.UseMvc(routes =>
             {
