@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using XM.Models;
+using Domain.DBContext;
 
 namespace XM.Application.QuestionType.Queries.GetQuestionTypeById
 {
