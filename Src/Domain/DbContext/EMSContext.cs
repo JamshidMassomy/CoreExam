@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using XM.Models.Entity;
 
-namespace XM.Models
+namespace Domain.DBContext
 {
     public partial class EMSContext : DbContext
     {

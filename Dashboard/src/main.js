@@ -7,6 +7,7 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
+import store from './store'
 
 
 // todo
@@ -19,6 +20,8 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
+  store,
+
   components: {
     App
   }

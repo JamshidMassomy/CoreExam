@@ -14,7 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using XM.Application.QuestionType.Queries.GetQuestionTypesList;
-using XM.Models;
+using Domain.DBContext;
 
 
 namespace XM

@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using XM.Models;
+using Domain.DBContext;
 
 namespace XM.Application.QuestionType.Commands.CreateQuestionType
 {

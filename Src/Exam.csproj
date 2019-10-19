@@ -29,11 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Application\QuestionCategory\Queries\" />
     <Folder Include="Application\QuestionType\Commands\UpdateQuestionType\" />
-    <Folder Include="Application\Question\Commands\" />
-    <Folder Include="Application\Question\Queries\" />
-    <Folder Include="Application\Registration\Commands\" />
-    <Folder Include="Application\Registration\Queries\" />
+    <Folder Include="Application\Registration\Commands\CreateRegistration\" />
+    <Folder Include="Application\Registration\Commands\UpdateRegistraton\" />
+    <Folder Include="Application\Registration\Queries\GetRegistrations\" />
+    <Folder Include="Common\" />
+    <Folder Include="Domain\Config\" />
   </ItemGroup>
 
 </Project>
