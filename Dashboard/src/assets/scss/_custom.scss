@@ -1,1 +1,11 @@
 // Here you can add other styles
+.container-fluid{
+    width: 73%;
+}
+.sidebar{
+    position: relative;
+    text-align: center;
+}
+.navbar-nav.mr-auto{
+    margin-left: 0px !important;
+}

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 // Containers
 const DefaultContainer = () => import('@/containers/DefaultContainer')
+const Home = () => import('@/containers/Home')
 
 // Views
 const Dashboard = () => import('@/views/Dashboard')
@@ -78,7 +79,7 @@ function configRoutes() {
           redirect: '/theme/colors',
           name: 'Theme',
           component: {
-            render (c) { return c('router-view') }
+            render(c) { return c('router-view') }
           },
           children: [
             {
@@ -105,9 +106,9 @@ function configRoutes() {
         },
         {
           path: 'users',
-          meta: { label: 'Users'},
+          meta: { label: 'Users' },
           component: {
-            render (c) { return c('router-view') }
+            render(c) { return c('router-view') }
           },
           children: [
             {
@@ -116,7 +117,7 @@ function configRoutes() {
             },
             {
               path: ':id',
-              meta: { label: 'User Details'},
+              meta: { label: 'User Details' },
               name: 'User',
               component: User,
             },
@@ -127,7 +128,7 @@ function configRoutes() {
           redirect: '/base/cards',
           name: 'Base',
           component: {
-            render (c) { return c('router-view') }
+            render(c) { return c('router-view') }
           },
           children: [
             {
@@ -217,7 +218,7 @@ function configRoutes() {
           redirect: '/buttons/standard-buttons',
           name: 'Buttons',
           component: {
-            render (c) { return c('router-view') }
+            render(c) { return c('router-view') }
           },
           children: [
             {
@@ -247,7 +248,7 @@ function configRoutes() {
           redirect: '/icons/font-awesome',
           name: 'Icons',
           component: {
-            render (c) { return c('router-view') }
+            render(c) { return c('router-view') }
           },
           children: [
             {
@@ -277,7 +278,7 @@ function configRoutes() {
           redirect: '/notifications/alerts',
           name: 'Notifications',
           component: {
-            render (c) { return c('router-view') }
+            render(c) { return c('router-view') }
           },
           children: [
             {
@@ -300,11 +301,18 @@ function configRoutes() {
       ]
     },
     {
+      path: '/Home',
+      name: 'Home',
+      redirect: '/Home',
+      component: Home,
+
+    },
+    {
       path: '/pages',
       redirect: '/pages/404',
       name: 'Pages',
       component: {
-        render (c) { return c('router-view') }
+        render(c) { return c('router-view') }
       },
       children: [
         {

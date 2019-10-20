@@ -1,65 +1,84 @@
 <template>
   <div class="app">
-    <DefaultHeader/>
+    <!-- <DefaultHeader fixed /> -->
     <div class="app-body">
+      <b-container class="bv-example-row">
+        <b-row>
+          <div class="container-fluid">
+            <router-view></router-view>
+          </div>
+        </b-row>
+      </b-container>
       <AppSidebar fixed>
-        <SidebarHeader/>
-        <SidebarForm/>
         <SidebarNav :navItems="nav"></SidebarNav>
-        <SidebarFooter/>
-        <SidebarMinimizer/>
       </AppSidebar>
-      <main class="main">
-        <Breadcrumb :list="list"/>
-        <div class="container-fluid">
-          <router-view></router-view>
-        </div>
-      </main>
-      <AppAside fixed>
-        <!--aside-->
-        <DefaultAside/>
-      </AppAside>
     </div>
-    <DefaultFooter/>
+    <!-- <DefaultFooter /> -->
   </div>
 </template>
-
+<style>
+.container-fluid {
+  margin-top: 5%;
+}
+</style>
 <script>
-import nav from '@/_nav'
-import { Sidebar as AppSidebar, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav, Aside as AppAside, Breadcrumb } from '@coreui/vue'
-import DefaultAside from './DefaultAside'
-import DefaultHeaderDropdownAccnt from './DefaultHeaderDropdownAccnt'
-import DefaultHeader from './DefaultHeader'
-import DefaultFooter from './DefaultFooter'
+import nav from "@/_nav";
+import {
+  Sidebar as AppSidebar,
+  SidebarNav,
+  Aside as AppAside
+} from "@coreui/vue";
 
 export default {
-  name: 'DefaultContainer',
+  name: "DefaultContainer",
   components: {
     AppSidebar,
     AppAside,
-    Breadcrumb,
-    DefaultAside,
-    DefaultHeaderDropdownAccnt,
-    SidebarForm,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarNav,
-    SidebarMinimizer,
-    DefaultFooter,
-    DefaultHeader
+    SidebarNav
   },
-  data () {
+  data() {
     return {
       nav: nav.items
-    }
+    };
   },
   computed: {
-    name () {
-      return this.$route.name
+    name() {
+      return this.$route.name;
     },
-    list () {
-      return this.$route.matched.filter((route) => route.name || route.meta.label )
+    list() {
+      return this.$route.matched.filter(
+        route => route.name || route.meta.label
+      );
     }
   }
-}
+};
+// export default {
+//   name: "DefaultContainer",
+//   components: {
+//     AppSidebar,
+//     AppAside,
+//     DefaultAside,
+//     DefaultHeaderDropdownAccnt,
+
+//     SidebarNav,
+
+//     DefaultFooter,
+//     DefaultHeader
+//   },
+//   data() {
+//     return {
+//       nav: nav.items
+//     };
+//   },
+//   computed: {
+//     name() {
+//       return this.$route.name;
+//     },
+//     list() {
+//       return this.$route.matched.filter(
+//         route => route.name || route.meta.label
+//       );
+//     }
+//   }
+// };
 </script>
