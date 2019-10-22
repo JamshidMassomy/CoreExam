@@ -2,28 +2,24 @@ export default {
   items: [
     {
       name: 'Dashboard',
-      url: '/dashboard',
+      url: '/admin/dashboard',
       icon: 'icon-speedometer'
     },
     {
-      title: true,
-      name: 'Theme',
-      class: '',
-      wrapper: {
-        element: '',
-        attributes: {}
-      }
+      name: 'Question Manager',
+      url: '/admin/QuestionRegistrations',
+      icon:''
     },
     {
-      name: 'Home',
-      url: '/theme/colors',
-      icon: 'icon-drop'
+      name: 'Applicant Manager',
+      url: '',
+      icon: ''
     },
-    {
-      name: 'Typography',
-      url: '/theme/typography',
-      icon: 'icon-pencil'
-    },
+    //{
+    //  name: 'colors',
+    //  url: '/theme/colors',
+    //  icon: 'icon-drop'
+    //},
     {
       title: true,
       name: 'Components',
@@ -45,10 +41,6 @@ export default {
         }
       ]
     }
-
-
-
-
 
 
   ]

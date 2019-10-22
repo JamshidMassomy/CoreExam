@@ -45,7 +45,9 @@
 </template>
 
 <script>
-export default {
-  name: 'Login'
-}
+  export default {
+    name: "Login",
+    components: {},
+    methods: {}
+  };
 </script>

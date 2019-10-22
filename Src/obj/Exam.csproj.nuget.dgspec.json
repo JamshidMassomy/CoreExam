@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\CoreExam\\Src\\Exam.csproj": {}
+    "E:\\Github\\CoreExam\\Src\\Exam.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\CoreExam\\Src\\Exam.csproj": {
+    "E:\\Github\\CoreExam\\Src\\Exam.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\CoreExam\\Src\\Exam.csproj",
+        "projectUniqueName": "E:\\Github\\CoreExam\\Src\\Exam.csproj",
         "projectName": "Exam",
-        "projectPath": "C:\\GitHub\\CoreExam\\Src\\Exam.csproj",
+        "projectPath": "E:\\Github\\CoreExam\\Src\\Exam.csproj",
         "packagesPath": "C:\\Users\\AK-Laptop\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\CoreExam\\Src\\obj\\",
+        "outputPath": "E:\\Github\\CoreExam\\Src\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -88,10 +88,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

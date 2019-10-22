@@ -1,12 +1,11 @@
 <template>
-  <p>dashboard home page</p>
+  <p>dashboard home page setting for admin here</p>
 </template>
 
 <script>
 export default {
   name: "dashboard",
   components: {},
-  data: function() {},
   methods: {}
 };
 </script>

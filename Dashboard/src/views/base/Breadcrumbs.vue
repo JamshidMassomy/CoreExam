@@ -1,10 +1,12 @@
 <template>
   <div class="wrapper">
-    <p>hi from bread camp</p>
+    <p>DEmo of axios has been </p>
   </div>
 </template>
 
 <script>
+
+
 export default {
   name: "breadcrumbs",
   data() {
@@ -24,6 +26,12 @@ export default {
         }
       ]
     };
+  },
+   mounted () {
+    axios
+      .get('https://localhost:5001/api/Look/GetQuestionTypes/QuestionTypes')
+      .then(response => (console.log(response)))
   }
 };
+
 </script>

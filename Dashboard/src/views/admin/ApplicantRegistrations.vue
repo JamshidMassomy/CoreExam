@@ -1,0 +1,15 @@
+<template>
+  <div class="app flex-row align-items-center">
+    <div class="container">
+      <p>Applicant Registrations</p>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "ApplicantRegistrations",
+    components: {},
+    methods: {}
+  };
+</script>
