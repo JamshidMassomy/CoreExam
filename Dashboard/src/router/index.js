@@ -3,11 +3,14 @@ import Router from 'vue-router'
 // Containers
 const DefaultContainer = () => import('@/containers/DefaultContainer')
 const HomeContainer = () => import('@/containers/HomeContainer')
+const Dari = () => import('@/dari/Dari')
+const Pashto = () => import('@/pashto/Pashto')
 // Views
 const Dashboard = () => import('@/views/admin/Dashboard')
-const ApplicantRegistrations = () => import('@/views/admin/ApplicantRegistrations')
+const Applicant = () => import('@/views/admin/Applicant')
 const Login = () => import('@/views/admin/Login')
-const QuestionRegistrations = () => import('@/views/admin/QuestionRegistrations')
+const Question = () => import('@/views/admin/Question')
+const NotFound = () => import('@/views/error/Page404')
 Vue.use(Router)
 
 function configRoutes() {
@@ -18,19 +21,56 @@ function configRoutes() {
         component: HomeContainer
     },
     {
+        path: '/pashto',
+        name: 'Pashto',
+        component: Pashto
+       
+    },
+    {
+        path: '/dari',
+        name: 'Dari',
+        
+        component: Dari
+    },
+    {
+        path: '/404',
+        name: 'not found',
+        component: NotFound
+    },
+    {
+        path: '*',
+        redirect: '/404'
+           
+    },
+    {
       path: '/admin',
       name: 'admin',
-        component: DefaultContainer,
+      component: DefaultContainer,
       children:
       [
         {
-          path: '/Question',
-              name: 'Question',
+            path: '/admin/dashboard',
+            name: 'admin-home',
+            component: Dashboard
+
+        },
+        {
+          path: '/admin/login',
+          name: 'login',
           component: Login
+        },
+        {
+          path: '/admin/question',
+          name: 'question',
+          component: Question
+        },
+        {
+          path: '/admin/applicant',
+          name: 'applicant',
+          component: Applicant
         }
       ]
-      },
-   
+      }, 
       {
           path: '/Question',
           name:'Question',

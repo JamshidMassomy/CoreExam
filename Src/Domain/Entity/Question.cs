@@ -16,7 +16,7 @@ namespace XM.Models.Entity
         public int QuestionTypeId { get; set; }
         public string Lebel { get; set; }
         public int? Point { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual QuestionType QuestionType { get; set; }

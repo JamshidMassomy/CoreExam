@@ -3,11 +3,9 @@
     <!-- <DefaultHeader fixed /> -->
     <div class="app-body">
       <b-container class="bv-example-row">
-        <b-row>
           <div class="container-fluid">
             <router-view></router-view>
           </div>
-        </b-row>
       </b-container>
       <AppSidebar fixed>
         <SidebarNav :navItems="nav"></SidebarNav>
@@ -18,7 +16,7 @@
 </template>
 <style>
 .container-fluid {
-  margin-top: 5%;
+  margin-top: 6% !important;
 }
 </style>
 <script>

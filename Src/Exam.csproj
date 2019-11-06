@@ -23,19 +23,20 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.10" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\QuestionCategory\Queries\" />
+    <Folder Include="Application\Languague\Command\" />
     <Folder Include="Application\QuestionType\Commands\UpdateQuestionType\" />
     <Folder Include="Application\Registration\Commands\CreateRegistration\" />
     <Folder Include="Application\Registration\Commands\UpdateRegistraton\" />
     <Folder Include="Application\Registration\Queries\GetRegistrations\" />
     <Folder Include="Common\" />
     <Folder Include="Domain\Config\" />
+    <Folder Include="wwwroot\xmphoto\" />
   </ItemGroup>
 
 </Project>

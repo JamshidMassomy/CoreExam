@@ -1,6 +1,8 @@
 ﻿using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using XM.Application.Languague.Query.GetLanguague;
+using XM.Application.QuestionCategory.Queries;
 using XM.Application.QuestionType.Commands.CreateQuestionType;
 using XM.Application.QuestionType.Queries.GetQuestionTypeById;
 using XM.Application.QuestionType.Queries.GetQuestionTypesList;
@@ -26,6 +28,15 @@ namespace Exam.Controllers
         public async Task<IActionResult> CreateQuestionType([FromBody] CreateQuestionTypeCommand createQuestionTypeCommand)
         {
             return Ok(await  Mediator.Send(createQuestionTypeCommand));
+        }
+        [HttpGet("QuestionCategory")]
+        public async Task<IActionResult> GetQuestionCategory()
+        {
+            return Ok(await Mediator.Send(new GetQuestionCategoryQuery()));
+        }
+        [HttpGet("GetLanguague")]
+        public async Task<IActionResult> GetLanguague() {
+            return Ok(await Mediator.Send(new GetLanguagueQuery()));
         }
     }
 }

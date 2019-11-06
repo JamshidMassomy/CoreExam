@@ -19,7 +19,7 @@ namespace XM.Models.Entity
         public string Email { get; set; }
         public int? Phone { get; set; }
         public byte[] PassHash { get; set; }
-        public bool Gender { get; set; }
+        public bool? Gender { get; set; }
 
         public virtual ICollection<Registration> Registration { get; set; }
     }

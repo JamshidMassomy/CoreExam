@@ -19,7 +19,9 @@ namespace Domain.DBContext
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Choice> Choice { get; set; }
         public virtual DbSet<Duration> Duration { get; set; }
+        public virtual DbSet<Languague> Languague { get; set; }
         public virtual DbSet<Paper> Paper { get; set; }
+        public virtual DbSet<Photo> Photo { get; set; }
         public virtual DbSet<Question> Question { get; set; }
         public virtual DbSet<QuestionType> QuestionType { get; set; }
         public virtual DbSet<Registration> Registration { get; set; }
@@ -36,7 +38,7 @@ namespace Domain.DBContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
+            modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity<Category>(entity =>
             {
@@ -87,6 +89,13 @@ namespace Domain.DBContext
                     .HasConstraintName("FK_Duration_RegistrationID");
             });
 
+            modelBuilder.Entity<Languague>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Name).HasMaxLength(100);
+            });
+
             modelBuilder.Entity<Paper>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -108,6 +117,28 @@ namespace Domain.DBContext
                     .HasForeignKey(d => d.RegistrationId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Paper_RegistrationID");
+            });
+
+            modelBuilder.Entity<Photo>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Base64).IsUnicode(false);
+
+                entity.Property(e => e.ContentType)
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Descriptions).HasMaxLength(400);
+
+                entity.Property(e => e.FileName).HasColumnName("fileName");
+
+                entity.Property(e => e.Path)
+                    .HasColumnName("path")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.RecordId).HasColumnName("RecordID");
             });
 
             modelBuilder.Entity<Question>(entity =>
@@ -153,6 +184,16 @@ namespace Domain.DBContext
                 entity.Property(e => e.Toaken).HasMaxLength(400);
 
                 entity.Property(e => e.TokenExpireTime).HasColumnType("date");
+
+                entity.HasOne(d => d.Student)
+                    .WithMany(p => p.Registration)
+                    .HasForeignKey(d => d.StudentId)
+                    .HasConstraintName("FK_Registration_StudentID");
+
+                entity.HasOne(d => d.Test)
+                    .WithMany(p => p.Registration)
+                    .HasForeignKey(d => d.TestId)
+                    .HasConstraintName("FK_Registration_TestID");
             });
 
             modelBuilder.Entity<Student>(entity =>

@@ -15,7 +15,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using XM.Application.QuestionType.Queries.GetQuestionTypesList;
 using Domain.DBContext;
-
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using XM.Application.Photo.Command;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Exam.Controllers;
 
 namespace XM
 {
@@ -37,6 +41,15 @@ namespace XM
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            //services.AddSingleton<IFileProvider>(
+            //     new PhysicalFileProvider(
+            //         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+            //services.AddSingleton<IFileProvider>(
+            //     new PhysicalFileProvider(
+            //         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+            //services.AddSingleton<IFormFile, IFormFile>();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             var _string = Configuration.GetConnectionString("_string");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

@@ -12,8 +12,8 @@ namespace XM.Models.Entity
         }
 
         public int Id { get; set; }
-        public int StudentId { get; set; }
-        public int TestId { get; set; }
+        public int? StudentId { get; set; }
+        public int? TestId { get; set; }
         public DateTime? RegistrationDate { get; set; }
         public string Toaken { get; set; }
         public DateTime? TokenExpireTime { get; set; }

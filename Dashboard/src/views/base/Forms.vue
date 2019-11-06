@@ -1052,7 +1052,7 @@ export default {
   },
    mounted () {
     axios
-      .get('https://localhost:44328/api/Look/GetQuestionTypes/QuestionTypes')
+      .get('https://localhost:5001/api/Look/GetQuestionTypes/QuestionTypes')
       .then(response => (console.log(response)))
   }
 }

@@ -7,12 +7,12 @@ export default {
     },
     {
       name: 'Question Manager',
-      url: '/admin/QuestionRegistrations',
+      url: '/admin/Question',
       icon:''
     },
     {
       name: 'Applicant Manager',
-      url: '',
+      url: '/admin/applicant',
       icon: ''
     },
     //{
@@ -20,27 +20,20 @@ export default {
     //  url: '/theme/colors',
     //  icon: 'icon-drop'
     //},
-    {
-      title: true,
-      name: 'Components',
-      class: '',
-      wrapper: {
-        element: '',
-        attributes: {}
-      }
-    },
-    {
-      name: 'Base',
-      url: '/base',
-      icon: 'icon-puzzle',
-      children: [
-        {
-          name: 'Breadcrumbs',
-          url: '/base/breadcrumbs',
-          icon: 'icon-puzzle'
-        }
-      ]
-    }
+   
+    //,
+    //{
+    //  name: 'Base',
+    //  url: '/base',
+    //  icon: 'icon-puzzle',
+    //  children: [
+    //    {
+    //      name: 'Breadcrumbs',
+    //      url: '/base/breadcrumbs',
+    //      icon: 'icon-puzzle'
+    //    }
+    //  ]
+    //}
 
 
   ]
