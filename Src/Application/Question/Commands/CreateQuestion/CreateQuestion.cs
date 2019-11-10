@@ -1,8 +1,10 @@
 ﻿using Domain.DBContext;
 using MediatR;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,16 +28,31 @@ namespace XM.Application.Question.Commands.CreateQuestion
         public string Choice4 { get; set; }
         public int Choice4Score { get; set; }
         //public IFormFile File { get; set; }       
-        //public string FileName { get; set; }
+        public string FileName { get; set; }
+        public string Base64 { get; set; }
     }
     public class CreateQuestionHandler : IRequestHandler<CreateQuestion, object>
     {
         private readonly EMSContext EMSContext;
-        public CreateQuestionHandler(EMSContext _EMSContext)
+        private readonly IHostingEnvironment hostingEnvironment;
+        //private readonly IFormFile File;
+       
+        public CreateQuestionHandler(EMSContext _EMSContext, IHostingEnvironment _hostingEnv)
         {
             this.EMSContext = _EMSContext;
+            this.hostingEnvironment = _hostingEnv;
         }
-
+        public async Task Post(IFormFile file)
+        {
+            var uploads = Path.Combine(hostingEnvironment.WebRootPath, "uploads");
+            if (file.Length > 0)
+            {
+                using (var fileStream = new FileStream(Path.Combine(uploads, file.FileName), FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+            }
+        }
         public async Task<object> Handle(CreateQuestion request, CancellationToken cancellationToken)
         {
             var Question = new Models.Entity.Question
@@ -47,6 +64,15 @@ namespace XM.Application.Question.Commands.CreateQuestion
                 IsActive = request.isActive
             };
             await EMSContext.AddAsync(Question);
+            await EMSContext.SaveChangesAsync(cancellationToken);
+
+            var img = new Models.Entity.Photo
+            {
+                FileName =request.FileName,
+                RecordId =Question.Id,
+                Base64 = request.Base64
+            };
+            await EMSContext.AddAsync(img);
             await EMSContext.SaveChangesAsync(cancellationToken);
 
             IList<Choice> Choices =  new List<Choice> { 

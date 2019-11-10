@@ -1,13 +1,15 @@
 <template>
   <div>
-    <div class="file-upload-form">
-      Upload an image file:
-      <input type="file" @change="previewImage" accept="image/*" id="file" ref ="file">
-      <input type="button" @click="savePhoto" value="save" />
-    </div>
-    <div class="image-preview" v-if="imageData.length > 0">
-      <img class="preview" :src="imageData">
-    </div>
+    
+      <div class="image-preview">
+        <img class="preview" :src="imageData">
+      </div>
+      <div class="file-upload-form">
+        <input type="file" @change="previewImage" accept="image/*" id="file" ref="file">
+        <input type="button" @click="savePhoto" value="save" />
+      </div>
+   
+    
   </div>
 </template>
 
@@ -59,16 +61,3 @@
 
   }
 </script>
-<style>
-  .file-upload-form, .image-preview {
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    padding: 20px;
-}
-img.preview {
-    width: 200px;
-    background-color: white;
-    border: 1px solid #DDD;
-    padding: 5px;
-}
-
-</style>

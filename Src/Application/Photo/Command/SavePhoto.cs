@@ -29,8 +29,8 @@ namespace XM.Application.Photo.Command
                 RecordId = request.RecordId,
                 FileName = request.FileName,
                 Path = request.Path,
-                Base64 = request.Base64,
-                File = request.File  
+                Base64 = request.Base64//,
+                //File = request.File  
             };
             await eMSContext.AddAsync(_photo);
             await eMSContext.SaveChangesAsync();

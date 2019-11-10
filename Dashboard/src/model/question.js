@@ -1,4 +1,4 @@
-import Div_Img from '@/shared/Img.vue'
+//import Div_Img from '@/shared/Img.vue'
 export default {
     name: 'reg-question',
     data() {
@@ -16,10 +16,12 @@ export default {
                 qscore: '',
                 qactive: ''
             },
+            
             photo: {
                 recordid: '',
                 FileName: '',
-                Base64:''
+                img: ''
+               
             }
         }
     },
@@ -43,27 +45,44 @@ export default {
                 data:
                 {
                     questionTypeID: this.parm.qtypeid.id,
+                    base64: this.photo.img,
                     categoryID: this.parm.qcategoryid.id,
                     lebel: this.parm.qtext,
                     point: this.parm.qscore,
-                    isActive: this.parm.qactive
+                    isActive: this.parm.qactive,
+                    fileName: 'static Name'                    
+                    
                 }
             }).then(x => { console.log(x) })
         },
-        savePhoto() {
-            this.axios.get('/File/SavePhoto/{'+this.photo.recordid + '}/{' + this.photo.FileName + '}/${' + this.photo.Base64 + '}')
-                .then(response => { this.selects.qlang = response.data })
+        previewImage: function (event) {
+            var input = event.target;
+            if (input.files && input.files[0]) {
+                // create a new FileReader to read this image and convert to base64 format
+                var reader = new FileReader();
+                // Define a callback function to run, when FileReader finishes its job
+                reader.onload = (e) => {
+                    // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
+                    // Read image as base64 and set to imageData
+                    this.photo.img = e.target.result;
+                }
+                // Start the reader job - read file as a data url (base64 format)
+                reader.readAsDataURL(input.files[0]);
+            }
         }
+        
     },
-    mounted(){
+    mounted() {
         this.getTypes()
         this.getCatgories()
         this.getLang()
-    },
-    components: {
-        Div_Img
     }
     //computed() {
-        
+
     //}
+
+    //components: {
+    //    //Div_Img
+    //}
+    
 }

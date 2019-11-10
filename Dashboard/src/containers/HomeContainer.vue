@@ -5,7 +5,8 @@
       <b-container class="bv-example-row">
         <b-row>
           <div class="col-sm-6 col-lg-4">
-            <router-link to="/dari" refresh>
+            <!--<a  href="#/dari"><b-button block variant="primary" class="h4 m-0">دری</b-button></a-->
+            <router-link to="/dari" >
               <b-button block variant="primary" class="h4 m-0">دری</b-button>
             </router-link>
 
@@ -39,7 +40,7 @@
   }
   .container{
     margin:auto;
-    padding-left:15rem;
+   
   }
   .btn-block
   {

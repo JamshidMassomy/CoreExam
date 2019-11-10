@@ -12,10 +12,34 @@
 .container {
   min-width: 1380px;
 }
-
 .login-dari {
   margin-top: 13rem;
 }
 .login-pashto {
   margin-top: 13rem;
 }
+#logo {
+  width: 45em;
+  float: left;
+  margin-top: 4.2em;
+}
+.file-upload-form, .image-preview {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  //padding: 20px;
+}
+
+img.preview {
+  width: 465px;
+  max-width:465px;
+  max-height:294px;
+  
+  padding: 5px;
+}
+.image-preview{
+  text-align:center;
+  padding:initial;
+  border:solid #006fba;
+  max-height:300px;
+  min-height:300px;
+}
+

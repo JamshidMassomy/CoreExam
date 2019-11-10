@@ -46,10 +46,3 @@ import Logo from "@/shared/Logo.vue";
     } 
   }
 </script>
-<style>
-.container-fluid {
-  margin-top: 5%;
-  
-}
-
-</style>

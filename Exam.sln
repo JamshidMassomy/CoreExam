@@ -26,6 +26,27 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Dashboard", "Dashboard\", "
 		SlnRelativePath = "Dashboard\"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Econfsys", "..\..\Plus\Teortical Exam\Exam\Econfsys\", "{6D821282-C540-4E6F-988B-84F0F763465C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_54223"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\Plus\Teortical Exam\Exam\Econfsys\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54223\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_54223"
+		Release.AspNetCompiler.PhysicalPath = "..\..\Plus\Teortical Exam\Exam\Econfsys\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54223\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "54223"
+		SlnRelativePath = "..\..\Plus\Teortical Exam\Exam\Econfsys\"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +61,10 @@ Global
 		{81F99D0F-D4D2-44F9-A843-F4A172F20730}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81F99D0F-D4D2-44F9-A843-F4A172F20730}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{81F99D0F-D4D2-44F9-A843-F4A172F20730}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{6D821282-C540-4E6F-988B-84F0F763465C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D821282-C540-4E6F-988B-84F0F763465C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D821282-C540-4E6F-988B-84F0F763465C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D821282-C540-4E6F-988B-84F0F763465C}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
