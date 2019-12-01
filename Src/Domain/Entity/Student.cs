@@ -15,12 +15,12 @@ namespace XM.Models.Entity
         public string FatherName { get; set; }
         public string Nid { get; set; }
         public int? AccessLevel { get; set; }
-        public DateTime? EnteryDate { get; set; }
         public string Email { get; set; }
         public int? Phone { get; set; }
         public byte[] PassHash { get; set; }
-        public bool? Gender { get; set; }
+        public int? GenderId { get; set; }
 
+        public virtual Genders Gender { get; set; }
         public virtual ICollection<Registration> Registration { get; set; }
     }
 }

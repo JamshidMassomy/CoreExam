@@ -50,27 +50,27 @@
 
     <b-form inline>
       <label class="mr-sm-2">Options 1 </label>
-      <b-input type="text" placeholder="Options"></b-input>
+      <b-input v-model="choice.option1"  type="text" placeholder="Options"></b-input>
       <label class="mr-sm-2">Score</label>
-      <b-input id="inlineInput1" type="text" placeholder="Score"></b-input>
+      <b-input v-model="choice.option1Score" id="inlineInput1" type="text" placeholder="Score"></b-input>
     </b-form>
     <b-form inline>
       <label class="mr-sm-2">Options 2 </label>
-      <b-input id="inlineInput1" type="text" placeholder="Score"></b-input>
+      <b-input v-model="choice.option2" type="text" placeholder="Score"></b-input>
       <label class="mr-sm-2">Score </label>
-      <b-input id="inlineInput1" type="text" placeholder="Score"></b-input>
+      <b-input v-model="choice.option2Score" type="text" placeholder="Score"></b-input>
     </b-form>
     <b-form inline>
       <label class="mr-sm-2">Options 3 </label>
-      <b-input id="inlineInput1" type="text" placeholder="Options"></b-input>
+      <b-input v-model="choice.option3" type="text" placeholder="Options"></b-input>
       <label class="mr-sm-2">Score</label>
-      <b-input id="inlineInput1" type="text" placeholder="Score"></b-input>
+      <b-input v-model="choice.option3Score" type="text" placeholder="Score"></b-input>
     </b-form>
     <b-form inline>
       <label class="mr-sm-2">Options 4 </label>
-      <b-input id="inlineInput1" type="text" placeholder="Score"></b-input>
+      <b-input v-model="choice.option4" type="text" placeholder="Score"></b-input>
       <label class="mr-sm-2">Score </label>
-      <b-input id="inlineInput1" type="text" placeholder="Score"></b-input>
+      <b-input v-model="choice.option4Score" type="text" placeholder="Score"></b-input>
     </b-form>
 
     <div slot="footer">
@@ -79,9 +79,6 @@
     </div>
 
   </b-card>
-
-
-
 </template>
 <script src="../../model/question.js"></script>
 

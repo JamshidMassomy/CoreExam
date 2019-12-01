@@ -7,7 +7,7 @@ const Dari = () => import('@/dari/Dari')
 const Pashto = () => import('@/pashto/Pashto')
 // Views
 const Dashboard = () => import('@/views/admin/Dashboard')
-const Applicant = () => import('@/views/admin/Applicant')
+const Registration = () => import('@/views/admin/Registration')
 const Login = () => import('@/views/admin/Login')
 const Question = () => import('@/views/admin/Question')
 const NotFound = () => import('@/views/error/Page404')
@@ -65,9 +65,9 @@ function configRoutes() {
           component: Question
         },
         {
-          path: '/admin/applicant',
-          name: 'applicant',
-          component: Applicant
+            path: '/admin/registration',
+            name: 'registration',
+            component: Registration
         }
       ]
       }, 

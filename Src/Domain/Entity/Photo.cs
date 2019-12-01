@@ -1,5 +1,5 @@
-﻿
-using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.Collections.Generic;
 
 namespace XM.Models.Entity
 {
@@ -12,8 +12,5 @@ namespace XM.Models.Entity
         public string ContentType { get; set; }
         public string Path { get; set; }
         public string Descriptions { get; set; }
-        
-
-        
     }
 }

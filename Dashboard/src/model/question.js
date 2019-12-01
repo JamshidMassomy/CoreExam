@@ -16,7 +16,16 @@ export default {
                 qscore: '',
                 qactive: ''
             },
-            
+            choice: {
+                option1: '',
+                option1Score: '',
+                option2: '',
+                option2Score: '',
+                option3: '',
+                option3Score: '',
+                option4: '',
+                option4Score: '',
+            },
             photo: {
                 recordid: '',
                 FileName: '',
@@ -50,7 +59,16 @@ export default {
                     lebel: this.parm.qtext,
                     point: this.parm.qscore,
                     isActive: this.parm.qactive,
-                    fileName: 'static Name'                    
+                    fileName: 'static Name',
+                    choice1: this.choice.option1,
+                    choice1Score: this.choice.option1Score,
+                    choice2: this.choice.option2,
+                    choice2Score: this.choice.option2Score,
+                    choice3: this.choice.option3,
+                    choice3Score: this.choice.option3Score,
+                    choice4: this.choice.option4,
+                    choice4Score: this.choice.option4Score
+
                     
                 }
             }).then(x => { console.log(x) })

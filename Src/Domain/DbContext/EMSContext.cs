@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using XM.Models.Entity;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Domain.DBContext
 {
@@ -16,9 +16,11 @@ namespace Domain.DBContext
         {
         }
 
+        public virtual DbSet<AccessLevels> AccessLevels { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Choice> Choice { get; set; }
         public virtual DbSet<Duration> Duration { get; set; }
+        public virtual DbSet<Genders> Genders { get; set; }
         public virtual DbSet<Languague> Languague { get; set; }
         public virtual DbSet<Paper> Paper { get; set; }
         public virtual DbSet<Photo> Photo { get; set; }
@@ -39,6 +41,15 @@ namespace Domain.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
+
+            modelBuilder.Entity<AccessLevels>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Name).HasMaxLength(250);
+            });
 
             modelBuilder.Entity<Category>(entity =>
             {
@@ -87,6 +98,15 @@ namespace Domain.DBContext
                     .HasForeignKey(d => d.RegistrationId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Duration_RegistrationID");
+            });
+
+            modelBuilder.Entity<Genders>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Name).HasMaxLength(50);
             });
 
             modelBuilder.Entity<Languague>(entity =>
@@ -175,6 +195,8 @@ namespace Domain.DBContext
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.AccessLevelId).HasColumnName("AccessLevelID");
+
                 entity.Property(e => e.RegistrationDate).HasColumnType("date");
 
                 entity.Property(e => e.StudentId).HasColumnName("StudentID");
@@ -184,6 +206,11 @@ namespace Domain.DBContext
                 entity.Property(e => e.Toaken).HasMaxLength(400);
 
                 entity.Property(e => e.TokenExpireTime).HasColumnType("date");
+
+                entity.HasOne(d => d.AccessLevel)
+                    .WithMany(p => p.Registration)
+                    .HasForeignKey(d => d.AccessLevelId)
+                    .HasConstraintName("FK_Registration_AccessLevelID");
 
                 entity.HasOne(d => d.Student)
                     .WithMany(p => p.Registration)
@@ -202,15 +229,20 @@ namespace Domain.DBContext
 
                 entity.Property(e => e.Email).HasMaxLength(50);
 
-                entity.Property(e => e.EnteryDate).HasColumnType("date");
-
                 entity.Property(e => e.FatherName).HasMaxLength(400);
+
+                entity.Property(e => e.GenderId).HasColumnName("GenderID");
 
                 entity.Property(e => e.Name).HasMaxLength(400);
 
                 entity.Property(e => e.Nid)
                     .HasColumnName("NID")
                     .HasMaxLength(20);
+
+                entity.HasOne(d => d.Gender)
+                    .WithMany(p => p.Student)
+                    .HasForeignKey(d => d.GenderId)
+                    .HasConstraintName("FK_Student_GenderID");
             });
 
             modelBuilder.Entity<Test>(entity =>

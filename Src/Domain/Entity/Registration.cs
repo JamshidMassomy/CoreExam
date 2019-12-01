@@ -17,7 +17,9 @@ namespace XM.Models.Entity
         public DateTime? RegistrationDate { get; set; }
         public string Toaken { get; set; }
         public DateTime? TokenExpireTime { get; set; }
+        public int? AccessLevelId { get; set; }
 
+        public virtual AccessLevels AccessLevel { get; set; }
         public virtual Student Student { get; set; }
         public virtual Test Test { get; set; }
         public virtual ICollection<Duration> Duration { get; set; }

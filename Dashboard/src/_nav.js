@@ -12,7 +12,7 @@ export default {
     },
     {
       name: 'Applicant Manager',
-      url: '/admin/applicant',
+      url: '/admin/registration',
       icon: ''
     },
     //{
