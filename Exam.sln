@@ -23,7 +23,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Econfsys", "..\..\Plus\Teor
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "54223"
-		SlnRelativePath = "..\..\Plus\Teortical Exam\Exam\Econfsys\"
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Dashboard", "Dashboard\", "{81F99D0F-D4D2-44F9-A843-F4A172F20730}"
@@ -44,7 +43,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Dashboard", "Dashboard\", "
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "57153"
-		SlnRelativePath = "Dashboard\"
 	EndProjectSection
 EndProject
 Global

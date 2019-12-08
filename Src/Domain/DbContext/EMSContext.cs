@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using XM.Models.Entity;
 using Microsoft.EntityFrameworkCore.Metadata;
+using XM.Models.Entity;
 
 namespace Domain.DBContext
 {
@@ -22,13 +22,16 @@ namespace Domain.DBContext
         public virtual DbSet<Duration> Duration { get; set; }
         public virtual DbSet<Genders> Genders { get; set; }
         public virtual DbSet<Languague> Languague { get; set; }
+        public virtual DbSet<Login> Login { get; set; }
         public virtual DbSet<Paper> Paper { get; set; }
         public virtual DbSet<Photo> Photo { get; set; }
         public virtual DbSet<Question> Question { get; set; }
         public virtual DbSet<QuestionType> QuestionType { get; set; }
         public virtual DbSet<Registration> Registration { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Test> Test { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -114,6 +117,15 @@ namespace Domain.DBContext
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Name).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Login>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Password).HasMaxLength(250);
+
+                entity.Property(e => e.UserName).HasMaxLength(250);
             });
 
             modelBuilder.Entity<Paper>(entity =>
@@ -223,6 +235,13 @@ namespace Domain.DBContext
                     .HasConstraintName("FK_Registration_TestID");
             });
 
+            modelBuilder.Entity<Roles>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Name).HasMaxLength(100);
+            });
+
             modelBuilder.Entity<Student>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -252,6 +271,38 @@ namespace Domain.DBContext
                 entity.Property(e => e.Description).HasMaxLength(400);
 
                 entity.Property(e => e.Name).HasMaxLength(400);
+            });
+
+            modelBuilder.Entity<Users>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Email).HasMaxLength(250);
+
+                entity.Property(e => e.GenderId).HasColumnName("GenderID");
+
+                entity.Property(e => e.LoginId).HasColumnName("LoginID");
+
+                entity.Property(e => e.Name).HasMaxLength(250);
+
+                entity.Property(e => e.Phone).HasMaxLength(50);
+
+                entity.Property(e => e.RoleId).HasColumnName("RoleID");
+
+                entity.HasOne(d => d.Gender)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.GenderId)
+                    .HasConstraintName("FK_Users_GenderID");
+
+                entity.HasOne(d => d.Login)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.LoginId)
+                    .HasConstraintName("FK_Admin_LoginID");
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.RoleId)
+                    .HasConstraintName("FK_Users_RoleID");
             });
         }
     }

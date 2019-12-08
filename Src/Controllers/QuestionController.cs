@@ -1,6 +1,7 @@
 ﻿
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using XM.Application.Question.Commands.CreateQuestion;
 using XM.Application.Question.Commands.UpdateQuestion;
@@ -9,6 +10,7 @@ using XM.Models.Entity;
 
 namespace Exam.Controllers
 {
+    [Authorize]
     public class QuestionController : BaseController
     {
         [HttpPost("CreateQuestion")]

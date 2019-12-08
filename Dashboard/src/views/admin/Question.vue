@@ -74,7 +74,8 @@
     </b-form>
 
     <div slot="footer">
-      <b-button type="submit" @click="save()" size="sm" variant="primary"><i class="fa fa-dot-circle-o"></i> save</b-button>
+      <b-button type="submit" @click="save()" variant="primary">Save changes</b-button>
+      <!--<b-button type="submit"  variant="primary"><i class="fa fa-dot-circle-o"></i> save</b-button>-->
       <!--<b-button type="reset" size="sm" variant="danger"><i class="fa fa-ban"></i> Reset</b-button>-->
     </div>
 

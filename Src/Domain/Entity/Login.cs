@@ -3,18 +3,16 @@ using System.Collections.Generic;
 
 namespace XM.Models.Entity
 {
-    public partial class Genders
+    public partial class Login
     {
-        public Genders()
+        public Login()
         {
-            Student = new HashSet<Student>();
             Users = new HashSet<Users>();
         }
 
         public int Id { get; set; }
-        public string Name { get; set; }
-
-        public virtual ICollection<Student> Student { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
         public virtual ICollection<Users> Users { get; set; }
     }
 }

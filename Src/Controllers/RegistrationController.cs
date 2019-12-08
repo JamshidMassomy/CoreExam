@@ -12,8 +12,8 @@ namespace Exam.Controllers
     {
         [HttpPost("Registration")]
        public async Task<IActionResult> Create([FromBody] CreateRegistration createRegistration  )
-        {
+       {
             return Ok(await Mediator.Send(createRegistration));
-        }
+       }
     }
 }

@@ -16,15 +16,12 @@ export default {
                 phone:'',
                 email: '',
                 genderId:''
-                
             },
             registration: {
                 testID: '',
                 accessLevelID:''
-            }
-            
+            } 
         }
-
     },
     methods: {
         getGenderTypes() {
@@ -37,8 +34,25 @@ export default {
         },
         getTestTypes() {
             this.axios.get('/Look/GetTests/GetTestTypes')
-                .then(response => { this.select.testTypes = response.data })        }
-        
+                .then(response => { this.select.testTypes = response.data })
+        },
+        save() {
+            this.axios({
+                method: 'post',
+                url: '/Registration/Create/Registration',
+                data:
+                {
+                    name: this.student.name,
+                    fathername: this.student.fathername,
+                    nid: this.student.nid,
+                    email: this.student.email,
+                    phone: this.student.phone,
+                    genderId:this.student.genderId.id,
+                    testID: this.registration.testID.id,
+                    accessLevelID: this.registration.accessLevelID.id
+                }
+            }).then(x => { console.log(x) })
+        },
     },
     mounted() {
         this.getGenderTypes()

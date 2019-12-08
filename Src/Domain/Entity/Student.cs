@@ -14,7 +14,6 @@ namespace XM.Models.Entity
         public string Name { get; set; }
         public string FatherName { get; set; }
         public string Nid { get; set; }
-        public int? AccessLevel { get; set; }
         public string Email { get; set; }
         public int? Phone { get; set; }
         public byte[] PassHash { get; set; }

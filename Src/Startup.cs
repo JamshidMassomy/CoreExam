@@ -7,7 +7,6 @@ using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,11 +14,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using XM.Application.QuestionType.Queries.GetQuestionTypesList;
 using Domain.DBContext;
-using Microsoft.Extensions.FileProviders;
 using System.IO;
-using XM.Application.Photo.Command;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Exam.Controllers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Logging;
 
 namespace XM
 {
@@ -29,12 +29,10 @@ namespace XM
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IdentityModelEventSource.ShowPII = true;
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -42,15 +40,7 @@ namespace XM
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //services.AddSingleton<IFileProvider>(
-            //     new PhysicalFileProvider(
-            //         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
-            //services.AddSingleton<IFileProvider>(
-            //     new PhysicalFileProvider(
-            //         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
-            //services.AddSingleton<IFormFile, IFormFile>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
             var _string = Configuration.GetConnectionString("_string");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<EMSContext>(options =>options.UseSqlServer(_string));
@@ -59,9 +49,30 @@ namespace XM
             {
                 c.SwaggerDoc("v1", new Info { Title = "EMS Api", Version = "v1" });
             });
-        }
+           
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+           .AddJwtBearer(options =>
+           {
+               options.RequireHttpsMetadata = false;
+               options.SaveToken = true;
+               options.TokenValidationParameters = new TokenValidationParameters
+               {
+                   ValidateIssuerSigningKey = true,
+                   ValidateLifetime = true,
+                   ValidIssuer = Configuration["JWT:ISSUER"],
+                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:KEY"])),
+                   ValidateIssuer = false,
+                   ValidateAudience = false
+               };
+           });
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    
+        }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -74,13 +85,12 @@ namespace XM
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             //JWT
-
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -89,9 +99,6 @@ namespace XM
             });
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "EMS API V1");

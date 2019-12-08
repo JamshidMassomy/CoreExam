@@ -16,7 +16,6 @@
                       <h1>Login</h1>
                       <p class="text-muted">Sign In Dari </p>
                       <b-input-group class="mb-4">
-
                         <b-form-input type="password" class="form-control" placeholder="Password" autocomplete="current-password" />
                       </b-input-group>
                       <b-row>
@@ -29,8 +28,6 @@
                 </b-card>
               </b-card-group>
             </b-col>
-          
-            
         </b-row>
       </b-container>
       <router-view></router-view>
