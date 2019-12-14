@@ -32,24 +32,6 @@ namespace XM
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            IdentityModelEventSource.ShowPII = true;
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
-            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            var _string = Configuration.GetConnectionString("_string");
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<EMSContext>(options =>options.UseSqlServer(_string));
-            services.AddMediatR(typeof(GetQuestionTypesListQuery).GetTypeInfo().Assembly);
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Info { Title = "EMS Api", Version = "v1" });
-            });
-           
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -70,7 +52,25 @@ namespace XM
                    ValidateAudience = false
                };
            });
+            IdentityModelEventSource.ShowPII = true;
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
+            //services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            var _string = Configuration.GetConnectionString("_string");
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDbContext<EMSContext>(options =>options.UseSqlServer(_string));
+            services.AddMediatR(typeof(GetQuestionTypesListQuery).GetTypeInfo().Assembly);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "EMS Api", Version = "v1" });
+            });
+           
+         
     
         }
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -89,14 +89,14 @@ namespace XM
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseCors(option => option.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-            //JWT
             app.UseAuthentication();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
             app.UseSwaggerUI(c =>

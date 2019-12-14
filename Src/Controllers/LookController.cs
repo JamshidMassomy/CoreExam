@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using XM.Application.AccessLevels.Queries;
 using XM.Application.GenderTypes.Queries;
@@ -12,8 +13,10 @@ using XM.Application.Test.Queries;
 
 namespace Exam.Controllers
 {
+
     public class LookController : BaseController
     {
+        [Authorize]
         [HttpGet("QuestionTypes")]
         public async Task<IActionResult> GetQuestionTypes()
         {
