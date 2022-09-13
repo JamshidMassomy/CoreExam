@@ -44,7 +44,7 @@
     "babel-jest": "^25.0.0",
     "growl": "^1.10.5",
     "https-proxy-agent": "^2.2.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.3",
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-axios": "0.0.4",
     "vue-template-compiler": "^2.6.10"
